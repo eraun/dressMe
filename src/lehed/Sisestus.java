@@ -1,4 +1,4 @@
-package Projekt;
+package lehed;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -15,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import Failid.Failid;
+import Main.Pealeht;
 
 	/**
 	 *Klass loob sisestusvormi

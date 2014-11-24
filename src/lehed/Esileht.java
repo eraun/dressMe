@@ -1,8 +1,12 @@
-package Projekt;
+package lehed;
 
 import java.awt.*;
 
 import javax.swing.*;
+
+import Failid.Failid;
+import Main.Pealeht;
+import Objekt.Riided;
 
 import java.awt.event.*;
 import java.io.IOException;

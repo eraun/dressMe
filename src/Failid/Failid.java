@@ -1,9 +1,11 @@
-package Projekt;
+package Failid;
 
 import java.io.*;
 import java.util.ArrayList;
 
-class Failid {
+import Objekt.Riided;
+
+public class Failid {
 	
 	public static ArrayList<Riided> reader() {
 		// punkt tähistab jooksvat kataloogi
@@ -40,7 +42,7 @@ class Failid {
 		return riidedList;
 	}
 
-	static FileWriter writer() {// Meetod, mis loob failikirjutaja
+	public static FileWriter writer() {// Meetod, mis loob failikirjutaja
 		try {// proovib
 			FileWriter writer = new FileWriter("file.txt", true); // kuna true, lisab nimetatud faili andmed juurde										
 			return writer;// kui saadi kirjutada

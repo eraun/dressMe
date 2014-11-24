@@ -1,4 +1,4 @@
-package Projekt;
+package lehed;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,6 +18,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import Main.Pealeht;
 
 public class Valik extends JPanel implements ActionListener {
 	

@@ -1,9 +1,11 @@
-package Projekt;
+package Main;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
+
+import lehed.Esileht;
 
 /**
  * Peaklass, kus luuakse raam

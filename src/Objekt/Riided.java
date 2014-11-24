@@ -1,6 +1,6 @@
-package Projekt;
+package Objekt;
 
-class Riided {
+public class Riided {
 	private String nimetus; // isendivaljad
 	private String liik;
 	private String hooaeg;
@@ -16,7 +16,7 @@ class Riided {
 		this.hooaeg = hooaeg;
 		this.syndmus = syndmus;
 	}
-	Riided(){
+	public Riided(){
 
 	}
 
