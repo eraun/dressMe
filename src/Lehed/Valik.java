@@ -1,4 +1,4 @@
-package lehed;
+package Lehed;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,7 +34,6 @@ public class Valik extends JPanel implements ActionListener {
 	public JLabel vastus;
 	public String valitud;
 	public JButton tagasi=new JButton("Esilehele");
-	public String vastusTekst = "";
 	public JLabel pilt;
 	public Valik() throws IOException{
 		    this.setPreferredSize(new Dimension (500,600));
@@ -61,24 +60,19 @@ public class Valik extends JPanel implements ActionListener {
 			syndmusteC.setSelectedIndex(0);//mitu valikut, 1 kuna muidu error
 			paneel1[0][0].add(nupp2);
 			kusimus2=new JLabel("Mis võiks selga panna?");
-			kusimus2.setForeground(Color.RED);
-			kusimus2.setFont(new Font("Serif", Font.BOLD, 16));
+			kusimus2.setForeground(Color.BLUE);
+			kusimus2.setFont(new Font("Serif", Font.BOLD, 15));
 			paneel1[0][0].add(kusimus2);
-			vastus=new JLabel(vastusTekst);
-			vastus.setFont(new Font("Serif", Font.BOLD, 12));
-			vastus.setForeground(Color.BLUE);
-			paneel1[0][0].add(vastus);
-			vastus.setVisible(false);
 			
 			String aa []=Aastaaeg();
 			today=new JLabel("Praegu on "+aa[0].toUpperCase()+"  ("+aa[1]+")");
-			today.setFont(new Font("Serif", Font.BOLD, 14));
+			today.setFont(new Font("Serif", Font.BOLD, 12));
 			paneel1[0][1].add(today);
 			//paneel1[0][1].add(nupp1, nupp1.CENTER);
 			paneel1[0][1].add(tagasi);
 			
 			pilt = new JLabel();    
-			pilt.setIcon(new ImageIcon("dressMe.jpg"));// your image here    
+			pilt.setIcon(new ImageIcon("C:/Users/Eva/Desktop/dressMe2.jpg"));// your image here    
 			paneel1[1][0].add(pilt); 
 			pilt.setVisible(false);
 			
@@ -103,13 +97,8 @@ public class Valik extends JPanel implements ActionListener {
 							JOptionPane.showMessageDialog(paneel1[0][0], "Palun vali riietuse liik!", "Tähelepanu!", JOptionPane.WARNING_MESSAGE);
 						}
 						else{	
-						vastusTekst+=("Pane: "+kombineeri());
-						kusimus2.setVisible(false);
-						vastus.setVisible(true);
-						//paneel1[0][0].add(vastus);
-						//vastus.setVisible(true);
+						kusimus2.setText(kombineeri());
 						pilt.setVisible(true);
-						System.out.println(vastus);
 						syndmusteC.setSelectedIndex(0);
 						
 						}
@@ -148,7 +137,6 @@ public class Valik extends JPanel implements ActionListener {
 		return nimi;
 	}
 
-	@SuppressWarnings("deprecation")
 	public static String [] Aastaaeg(){
 		String seasons[] = {"talv", "talv", "kevad", "kevad", "kevad", "suvi", 
 				  "suvi", "suvi", "sügis", "sügis", "sügis", "talv"};
@@ -200,7 +188,7 @@ public class Valik extends JPanel implements ActionListener {
 			case "3":
 				int random2=sobivad.get(ran.nextInt(sobivad.size()));
 				if(Esileht.rList.get(random2).getLiik().equals("2")==true){
-					komplekt=(Esileht.rList.get(random).getNimetus()+" ja "+Esileht.rList.get(random2).getNimetus());
+					komplekt=("<html>"+Esileht.rList.get(random).getNimetus()+" ja <br> "+Esileht.rList.get(random2).getNimetus()+"</html>");
 					lopp=true;
 					break;
 				}
@@ -214,7 +202,7 @@ public class Valik extends JPanel implements ActionListener {
 			case "4":
 				int random3=sobivad.get(ran.nextInt(sobivad.size()));
 				if(Esileht.rList.get(random3).getLiik().equals("1")==true){
-					komplekt=(Esileht.rList.get(random).getNimetus()+" ja "+Esileht.rList.get(random3).getNimetus());
+					komplekt=("<html>"+Esileht.rList.get(random).getNimetus()+" ja <br> "+Esileht.rList.get(random3).getNimetus()+"</html>");
 					lopp=true;
 					break;
 				}

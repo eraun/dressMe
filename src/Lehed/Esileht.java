@@ -1,13 +1,10 @@
-package lehed;
+package Lehed;
 
 import java.awt.*;
-
 import javax.swing.*;
-
 import Failid.Failid;
 import Main.Pealeht;
 import Objekt.Riided;
-
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +37,7 @@ public class Esileht extends JPanel implements ActionListener {
 	 * Nupp, mis viib riideid valima.
 	 */
 	public JButton nupp2 = new JButton("Riietust valima");// nupud
-	public static ArrayList<Riided> rList = new ArrayList<Riided>();
+	public static ArrayList<Riided> rList;
 
 	/**
 	 * Konstruktor esilehe kujundamiseks. Tehakse nuppude paneel, m‰‰ratakse
@@ -119,7 +116,6 @@ public class Esileht extends JPanel implements ActionListener {
 				Pealeht.Vahetus(new Valik());
 				rList = Failid.reader();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
