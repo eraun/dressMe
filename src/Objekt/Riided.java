@@ -5,7 +5,8 @@ public class Riided {
 	private String liik;
 	private String hooaeg;
 	private String syndmus;
-	String failiRida;
+	private String pilt;
+	
 
 	/**
 	 * Konstruktor
@@ -15,6 +16,7 @@ public class Riided {
 		this.liik = liik;
 		this.hooaeg = hooaeg;
 		this.syndmus = syndmus;
+		this.syndmus = pilt;
 	}
 	public Riided(){
 
@@ -51,6 +53,14 @@ public class Riided {
 
 	public void setSyndmus(String syndmus) {
 		this.syndmus = syndmus;
+	}
+	
+	public String getPilt() {
+		return pilt;
+	}
+
+	public void setPilt(String pilt) {
+		this.pilt = pilt;
 	}
 
 }

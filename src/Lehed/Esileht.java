@@ -51,7 +51,7 @@ public class Esileht extends JPanel implements ActionListener {
 		jpButtons.add(nupp2);
 		// jpButtons.add(nupp2);
 
-		this.setPreferredSize(new Dimension(500, 600));
+		this.setPreferredSize(new Dimension(500, 700));
 		this.setLayout(new BorderLayout());
 		this.add(jpButtons, BorderLayout.SOUTH); // kus asub nupu paneel
 

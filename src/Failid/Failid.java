@@ -25,6 +25,7 @@ public class Failid {
 				ese.setLiik(massiiv[1]);
 				ese.setHooaeg(massiiv[2]);
 				ese.setSyndmus(massiiv[3]);
+				ese.setPilt(massiiv[4]);
 				riidedList.add(ese);
 			}
 		} catch (FileNotFoundException e) {

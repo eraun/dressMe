@@ -5,12 +5,14 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,6 +25,7 @@ import Main.Pealeht;
 	 *Klass loob sisestusvormi
 	 */
 	public class Sisestus extends JPanel implements ActionListener{
+		protected static final Object NULL = null;
 		/**
 	 	 *Nimetuse lisamine.
 	 	 */ 
@@ -49,6 +52,8 @@ import Main.Pealeht;
 		public JCheckBox pidu;
 		public JCheckBox vaba;
 		public JCheckBox kontor;
+		
+		public JButton pilt=new JButton("Lisa pilt");
 		/**
 	 	 *Salvestusnupu loomine.
 	 	 */ 
@@ -56,6 +61,8 @@ import Main.Pealeht;
 	 	public JLabel tagasiside;
 	 	
 	 	public JButton tagasi=new JButton("Esilehele");
+	 	
+	 	public String riidePilt="C:/Users/Eva/Documents/Eva kool/Java/Workspace/dressMe_projekt/pildid/default.jpg";
 
 	 	
 		
@@ -63,7 +70,7 @@ import Main.Pealeht;
 			
 			//JDialog.setDefaultLookAndFeelDecorated(true);
 			//final Container contentPane = this;
-	        this.setPreferredSize(new Dimension (500,600));
+	        this.setPreferredSize(new Dimension (500,700));
 	        //this.setLayout(new GridLayout(0,1));
 			
 	        JPanel paneel1=new JPanel();
@@ -101,6 +108,8 @@ import Main.Pealeht;
 			paneel1.add(pidu);
 			paneel1.add(vaba);
 			paneel1.add(kontor);
+			
+			paneel1.add(pilt);
 	
 			JPanel paneel2=new JPanel();
 	
@@ -110,6 +119,27 @@ import Main.Pealeht;
 			tagasiside=new JLabel("Andmed salvestatud!");
 			paneel1.add(tagasiside);
 			tagasiside.setVisible(false);
+			
+			pilt.addActionListener(new ActionListener() {
+				@Override
+			    public void actionPerformed(ActionEvent e) {
+					 JFileChooser chooser = new JFileChooser();
+					 chooser.setCurrentDirectory(new java.io.File("."));
+					 chooser.setDialogTitle("Pildi asukoha salvestamine:");
+					 chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+					 chooser.setAcceptAllFileFilterUsed(false);
+
+					 if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+					      riidePilt=((chooser.getSelectedFile()).toString()).replaceAll("\\\\", "/");
+					      System.out.println(riidePilt);
+					      pilt.setText("Pilt salvestatud!");
+					    } else {
+					    pilt.setText("Pilti ei salvestatud!");
+					    }
+					}
+					
+				
+			});
 			
 			
 			salvesta.addActionListener(new ActionListener() {
@@ -175,7 +205,7 @@ import Main.Pealeht;
 			        
 			        	
 			        try {
-						kirjutab.write(valitudNimetus +","+valitudLiik+","+aasta+","+syndmus+"\r\n");
+						kirjutab.write(valitudNimetus +","+valitudLiik+","+aasta+","+syndmus+","+riidePilt+"\r\n");
 						kirjutab.close(); 
 						tagasiside.setVisible(true);
 					} catch (IOException e1) {
@@ -184,6 +214,7 @@ import Main.Pealeht;
 					}
 			        sisNimetus.setText("");
 			        liikideC.setSelectedIndex(0);
+			        pilt.setText("Lisa pilt");
 				    }
 			    }  
 		     });

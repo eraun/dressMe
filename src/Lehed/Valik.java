@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -34,9 +33,10 @@ public class Valik extends JPanel implements ActionListener {
 	public JLabel vastus;
 	public String valitud;
 	public JButton tagasi=new JButton("Esilehele");
-	public JLabel pilt;
+	public JLabel pilt1;
+	public JLabel pilt2;
 	public Valik() throws IOException{
-		    this.setPreferredSize(new Dimension (500,600));
+		    this.setPreferredSize(new Dimension (500,700));
 		
 	        int r=2;
 	        int v=2;
@@ -71,10 +71,13 @@ public class Valik extends JPanel implements ActionListener {
 			//paneel1[0][1].add(nupp1, nupp1.CENTER);
 			paneel1[0][1].add(tagasi);
 			
-			pilt = new JLabel();    
-			pilt.setIcon(new ImageIcon("C:/Users/Eva/Desktop/dressMe2.jpg"));// your image here    
-			paneel1[1][0].add(pilt); 
-			pilt.setVisible(false);
+			pilt1 = new JLabel();
+			paneel1[1][0].add(pilt1); 
+			pilt1.setVisible(false);
+			
+			pilt2 = new JLabel();    
+			paneel1[1][1].add(pilt2); 
+			pilt2.setVisible(false);
 			
 			nupp1.addActionListener(new ActionListener() {
 				@Override
@@ -96,9 +99,16 @@ public class Valik extends JPanel implements ActionListener {
 						if(syndmusteC.getSelectedItem()==""){
 							JOptionPane.showMessageDialog(paneel1[0][0], "Palun vali riietuse liik!", "Tähelepanu!", JOptionPane.WARNING_MESSAGE);
 						}
-						else{	
-						kusimus2.setText(kombineeri());
-						pilt.setVisible(true);
+						else{
+						String [] kombo=kombineeri();	
+						System.out.println(kombo[0]);
+						System.out.println(kombo[1]);
+						System.out.println(kombo[2]);
+						kusimus2.setText(kombo[0]);
+						pilt1.setIcon(new ImageIcon(((new ImageIcon(kombo[1])).getImage()).getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH))); 
+						pilt1.setVisible(true);
+						pilt2.setIcon(new ImageIcon(((new ImageIcon(kombo[2])).getImage()).getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH))); 
+						pilt2.setVisible(true);
 						syndmusteC.setSelectedIndex(0);
 						
 						}
@@ -162,7 +172,7 @@ public class Valik extends JPanel implements ActionListener {
 		
 	}
 	
-	public String kombineeri(){
+	public String [] kombineeri(){
 	
 		//Kombineerija
 		if(syndmusteC.getSelectedItem()!=""){
@@ -177,7 +187,7 @@ public class Valik extends JPanel implements ActionListener {
 		Random ran=new Random();
 		int random=sobivad.get(ran.nextInt(sobivad.size()));
 		String ranLiik=Esileht.rList.get(random).getLiik();
-		String komplekt = null;
+		String [] komplekt = new String[3];
 		boolean lopp=false;
 		while(!lopp){
 			switch(ranLiik){
@@ -188,7 +198,9 @@ public class Valik extends JPanel implements ActionListener {
 			case "3":
 				int random2=sobivad.get(ran.nextInt(sobivad.size()));
 				if(Esileht.rList.get(random2).getLiik().equals("2")==true){
-					komplekt=("<html>"+Esileht.rList.get(random).getNimetus()+" ja <br> "+Esileht.rList.get(random2).getNimetus()+"</html>");
+					komplekt[0]=("<html>"+Esileht.rList.get(random).getNimetus()+" ja <br> "+Esileht.rList.get(random2).getNimetus()+"</html>").toUpperCase();
+					komplekt[1]=Esileht.rList.get(random).getPilt();
+					komplekt[2]=Esileht.rList.get(random2).getPilt();
 					lopp=true;
 					break;
 				}
@@ -202,7 +214,9 @@ public class Valik extends JPanel implements ActionListener {
 			case "4":
 				int random3=sobivad.get(ran.nextInt(sobivad.size()));
 				if(Esileht.rList.get(random3).getLiik().equals("1")==true){
-					komplekt=("<html>"+Esileht.rList.get(random).getNimetus()+" ja <br> "+Esileht.rList.get(random3).getNimetus()+"</html>");
+					komplekt[0]=("<html>"+Esileht.rList.get(random).getNimetus()+" ja <br> "+Esileht.rList.get(random3).getNimetus()+"</html>").toUpperCase();
+					komplekt[1]=Esileht.rList.get(random).getPilt();
+					komplekt[2]=Esileht.rList.get(random3).getPilt();
 					lopp=true;
 					break;
 				}
@@ -212,7 +226,9 @@ public class Valik extends JPanel implements ActionListener {
 				}
 				
 			case "12":
-				komplekt=Esileht.rList.get(random).getNimetus();
+				komplekt[0]=(Esileht.rList.get(random).getNimetus()).toUpperCase();
+				komplekt[1]=Esileht.rList.get(random).getPilt();
+				komplekt[2]="";
 				lopp=true;
 				break;	
 				
@@ -220,7 +236,7 @@ public class Valik extends JPanel implements ActionListener {
 			}
 		}
 		//System.out.println(komplekt);
-		return komplekt.toUpperCase();
+		return komplekt;
 		
 
 		}
