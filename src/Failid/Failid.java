@@ -2,22 +2,38 @@ package Failid;
 
 import java.io.*;
 import java.util.ArrayList;
-
 import Objekt.Riided;
 
+/**
+ * Klass, kus luuakse programmi failikirjutaja ja faililugeja
+ * 
+ * @author Eva Tiits
+ */
 public class Failid {
 
+	// fail, mis on programmi andmebaasiks
+	public static File file = new File("file.txt");
+
+	/**
+	 * Meedtod, kus luuakse faililugeja ja loetakse fail sisse ning tehakse
+	 * Riiete objektideks
+	 * 
+	 * @return riideList- Arraylist Riided objektidest
+	 */
 	public static ArrayList<Riided> reader() {
-		
-		File file = new File("file.txt");
+
+		// Arraylist kuhu pannakse kõik Riided esemed objektidena
 		ArrayList<Riided> riidedList = new ArrayList<Riided>();
+		// failirida
+		String rida;
 
-		try {
-			// avame faili lugemise jaoks
+		try {// proovib
+				// avame faili lugemise jaoks
 			BufferedReader in = new BufferedReader(new FileReader(file));
-			String rida;
 
-			// loeme failist rida haaval Objektide Arraysse
+			// loeme failist rida haaval; igast reast tehakse objekt ja
+			// lisatakse Arraylisti
+			// loetakse kuni failis tuleb tühi rida
 			while ((rida = in.readLine()) != null) {
 				String[] massiiv = rida.split(",");
 				Riided ese = new Riided();
@@ -28,25 +44,32 @@ public class Failid {
 				ese.setPilt(massiiv[4]);
 				riidedList.add(ese);
 			}
-		} catch (FileNotFoundException e) {
+		}
+		catch (FileNotFoundException e) {// kui ei saadus faili lugeda, trükib teate
 			System.out.println("Faili ei leitud: \n" + e.getMessage());
 			riidedList = null;
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {// kui tuli mõni muu error, trükib teate
 			System.out.println("Mingi muu error: " + e.getMessage());
 		}
+		
+		// tagastab, kui saadi fail sisse lugeda
 		return riidedList;
 	}
 
-	public static FileWriter writer() {// Meetod, mis loob failikirjutaja
-		
-		File file = new File("file.txt");
-		
+	/**
+	 * Meedtod, kus luuakse failikirjutaja
+	 */
+	public static FileWriter writer() {
+
 		try {// proovib
-			FileWriter writer = new FileWriter(file, true); // kuna true, lisab nimetatud faili andmed juurde
-			return writer;// kui saadi kirjutada
-			
-		} catch (IOException e) {// kui faili ei saa kirjutada
-			System.out.println("Faili ei saa kirjutada!");// trükib selle
+			// kirjutaja lisab alati uue rea
+			FileWriter writer = new FileWriter(file, true);
+			// tagastab, kui saadi kirjutada
+			return writer;
+		}
+		catch (IOException e) {// kui ei saadus faili lugeda, trükib teate
+			System.out.println("Faili ei saa kirjutada!");
 			System.exit(1);// ja programmi töö lõpetatakse
 		}
 		return null;// midagi peab tagastama

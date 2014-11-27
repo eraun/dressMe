@@ -101,9 +101,6 @@ public class Valik extends JPanel implements ActionListener {
 						}
 						else{
 						String [] kombo=kombineeri();	
-						System.out.println(kombo[0]);
-						System.out.println(kombo[1]);
-						System.out.println(kombo[2]);
 						kusimus2.setText(kombo[0]);
 						pilt1.setIcon(new ImageIcon(((new ImageIcon(kombo[1])).getImage()).getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH))); 
 						pilt1.setVisible(true);

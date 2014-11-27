@@ -1,15 +1,21 @@
 package Objekt;
 
+/**
+ * Klass, kus objekt Riided
+ * 
+ * @author Eva Tiits
+ */
 public class Riided {
-	private String nimetus; // isendivaljad
+	
+	// isendiväljad
+	private String nimetus; 
 	private String liik;
 	private String hooaeg;
 	private String syndmus;
 	private String pilt;
 	
-
 	/**
-	 * Konstruktor
+	 * Konstruktorid
 	 */
 	Riided(String nimetus, String liik, String hooaeg, String syndmus) {
 		this.nimetus = nimetus;
@@ -18,11 +24,13 @@ public class Riided {
 		this.syndmus = syndmus;
 		this.syndmus = pilt;
 	}
+	
 	public Riided(){
-
 	}
 
-
+	/**
+	 * Getterid ja Setterid
+	 */
 	public String getNimetus() {
 		return nimetus;
 	}

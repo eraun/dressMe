@@ -62,7 +62,7 @@ import Main.Pealeht;
 	 	
 	 	public JButton tagasi=new JButton("Esilehele");
 	 	
-	 	public String riidePilt="C:/Users/Eva/Documents/Eva kool/Java/Workspace/dressMe_projekt/pildid/default.jpg";
+	 	public String riidePilt="C:/Users/Eva/Documents/pildid/default.jpg";
 
 	 	
 		

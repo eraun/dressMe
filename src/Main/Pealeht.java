@@ -1,38 +1,32 @@
 package Main;
 
 import java.awt.*;
-import java.util.ArrayList;
-
 import javax.swing.*;
-
 import Lehed.Esileht;
 
 /**
- * Peaklass, kus luuakse raam
+ * Peaklass, kus luuakse programmi alusraam
+ * 
+ * @author Eva Tiits
  */
 
 public class Pealeht {
-	/**
-	 * Pealehe raam
-	 */
+	// pealehe raam
 	static JFrame raam;
-
-	/**
-	 * Peaklassi konstruktor
-	 */
-	public Pealeht() {
-	}
+	public static int L = 500;
+	public static int P = 700;
 
 	/**
 	 * Peameetod
 	 */
 	public static void main(String[] args) {
-
+		// raami kirjeldamine
 		raam = new JFrame();
 		raam.setTitle("dressMe");
 		raam.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		raam.setSize(500, 600);
+		raam.setSize(L, P);
 		raam.setVisible(true);
+		// Esilehe konteineri raamile lisamine
 		Vahetus(new Esileht());
 
 	}
