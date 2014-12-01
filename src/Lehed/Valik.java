@@ -64,7 +64,7 @@ public class Valik extends JPanel implements ActionListener {
 			kusimus2.setFont(new Font("Serif", Font.BOLD, 15));
 			paneel1[0][0].add(kusimus2);
 			
-			String aa []=Aastaaeg();
+			String aa []=aastaaeg();
 			today=new JLabel("Praegu on "+aa[0].toUpperCase()+"  ("+aa[1]+")");
 			today.setFont(new Font("Serif", Font.BOLD, 12));
 			paneel1[0][1].add(today);
@@ -144,7 +144,7 @@ public class Valik extends JPanel implements ActionListener {
 		return nimi;
 	}
 
-	public static String [] Aastaaeg(){
+	public static String [] aastaaeg(){
 		String seasons[] = {"talv", "talv", "kevad", "kevad", "kevad", "suvi", 
 				  "suvi", "suvi", "sügis", "sügis", "sügis", "talv"};
 		java.util.Date date = Calendar.getInstance().getTime();
@@ -176,7 +176,7 @@ public class Valik extends JPanel implements ActionListener {
 		valitud=Character.toString(((String) syndmusteC.getSelectedItem()).charAt(0));}
 		ArrayList<Integer> sobivad=new ArrayList<>();
 		for (int i = 0; i < Esileht.rList.size(); i++) {
-			if((Esileht.rList.get(i).getHooaeg().contains(Valik.Aastaaeg()[2])==true) 
+			if((Esileht.rList.get(i).getHooaeg().contains(Valik.aastaaeg()[2])==true) 
 				&& (Esileht.rList.get(i).getSyndmus().contains(valitud)==true)){
 				sobivad.add(i);
 			}
@@ -232,7 +232,6 @@ public class Valik extends JPanel implements ActionListener {
 			
 			}
 		}
-		//System.out.println(komplekt);
 		return komplekt;
 		
 

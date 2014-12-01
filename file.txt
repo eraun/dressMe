@@ -20,3 +20,4 @@ must pitspluus,1,134,PT,C:/Users/Eva/Documents/pildid/pluus.jpg
 villane kleit,12,34,T,C:/Users/Eva/Documents/pildid/kleit.jpg
 soe kampsun,1,34,VT,C:/Users/Eva/Documents/pildid/default.jpg
 mustad pyksid,2,1234,P,C:/Users/Eva/Documents/pildid/default.jpg
+uus kampsun,1,134,T,C:/Users/Eva/Documents/pildid/default.jpg

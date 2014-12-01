@@ -41,6 +41,7 @@ public class Esileht extends JPanel implements ActionListener {
 		nuppudePaneel.add(valik);
 
 		// nuppudele tegevuse m‰‰ramine
+		
 		lisaUus.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -86,7 +87,5 @@ public class Esileht extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 }
