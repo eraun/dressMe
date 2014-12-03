@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -178,8 +177,12 @@ public class Sisestus extends JPanel implements ActionListener {
 				else {
 					//loome kirjutaja
 					FileWriter writer=Failid.writer();
+					
+					// lisab faili nimetuse
 					String valitudNimetus = sisNimetus.getText();
-					// lisab faili 1 (kui on ülemised riided), 2(kui on alumised riided), 3 (kui on kleit)
+					
+					// lisab faili 1 (kui on ülemised riided), 
+					//2(kui on alumised riided), 3 (kui on kleit)
 					String valitudLiik = "";
 					if (liikideC.getSelectedItem().equals(liigid[1])
 							|| liikideC.getSelectedItem().equals(liigid[3])) {
@@ -237,6 +240,7 @@ public class Sisestus extends JPanel implements ActionListener {
 								+ "\r\n");
 						writer.close();
 						tagasiside.setVisible(true);
+						
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -251,7 +255,7 @@ public class Sisestus extends JPanel implements ActionListener {
 		tagasi.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// tagasi nupu vajutusel minnakse Sisestus lehele
+				// tagasi nupu vajutusel minnakse Esilehele
 				if (e.getSource() == tagasi) {
 					Pealeht.Vahetus(new Esileht());
 				}
