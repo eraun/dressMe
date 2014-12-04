@@ -11,25 +11,24 @@ import Objekt.Riided;
  * @author Eva Tiits
  */
 public class Failid {
-
-	// fail, mis on programmi andmebaasiks
-	public static File file = new File("file.txt");
-
+	//defineeritakse fail
+	public static File file;
 	/**
 	 * Meedtod, kus luuakse faililugeja ja loetakse fail sisse ning tehakse
 	 * Riiete objektideks
 	 * 
 	 * @return riideList- Arraylist Riided objektidest
 	 */
-	public static ArrayList<Riided> reader() {
-
+	public static ArrayList<Riided> reader(String fNimi) {
+		//luuakse fail
+		file = new File(fNimi);
 		// Arraylist kuhu pannakse kõik Riided esemed objektidena
 		ArrayList<Riided> riidedList = new ArrayList<Riided>();
 		// failirida
 		String rida;
 
 		try {// proovib
-				// avame faili lugemise jaoks
+			// avame faili lugemise jaoks
 			BufferedReader in = new BufferedReader(new FileReader(file));
 
 			// loeme failist rida haaval; igast reast tehakse objekt ja
@@ -61,8 +60,9 @@ public class Failid {
 	/**
 	 * Meedtod, kus luuakse failikirjutaja
 	 */
-	public static FileWriter writer() {
-
+	public static FileWriter writer(String fNimi) {
+		//luuakse fail
+		file = new File(fNimi);
 		try {// proovib
 			// kirjutaja lisab alati uue rea
 			FileWriter writer = new FileWriter(file, true);

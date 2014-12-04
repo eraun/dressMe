@@ -1,7 +1,6 @@
 package Lehed;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -12,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Main.Pealeht;
+import Objekt.Riided;
 
 /**
  * Klass, kus luuakse Riietus valiku aken ja kombineeritakse riiete valik,
@@ -43,7 +44,7 @@ public class Valik extends JPanel implements ActionListener {
 	public String[] liigid2 = { "", "Pidulik riietus", "Vabaaja riietus",
 			"Töö riietus" };
 	public JComboBox syndmusteC = new JComboBox(liigid2);
-	public String valitud;
+	public static String valitud;
 
 	// riietuse soovitus nupp ja vastus
 	public JLabel kusimus2;
@@ -142,7 +143,8 @@ public class Valik extends JPanel implements ActionListener {
 					} 
 					//kui syndmus valitud, kombineeritakse riietus ja pildid ning kuvatakse need
 					else {
-						String[] kombo = kombineeri();
+						String vSyn=(String) syndmusteC.getSelectedItem();
+						String[] kombo = kombineeri(Esileht.rList, vSyn);
 						//küsimus vahetatakse vastuse vastu
 						kusimus2.setText(kombo[0]);
 						pilt1.setIcon(new ImageIcon(((new ImageIcon(kombo[1]))
@@ -223,17 +225,18 @@ public class Valik extends JPanel implements ActionListener {
 	 *ja valitud sündmusele sobiva riideesemete kombinatsiooni
 	 * @return komplekt - genereertitud eseme(te) nimetus(ed) ja piltide asukohad
 	 */
-	public String[] kombineeri() {
+	public static String[] kombineeri(ArrayList<Riided> list, String vSyn) {
+		
 		//võetakse valitud sündmuse esitäht, ehk selle tähis objektis
-		if (syndmusteC.getSelectedItem() != "") {
-			valitud = Character.toString(((String) syndmusteC.getSelectedItem()).charAt(0));
+		if (vSyn != "") {
+			valitud = Character.toString((vSyn).charAt(0));
 		}
 		//moodustatakse Arraylist tingimustele vastavatest (sündmus ja aastaaeg) 
 		//objektide numbritest Riiete Arraylistis
 		ArrayList<Integer> sobivad = new ArrayList<>();
-		for (int i = 0; i < Esileht.rList.size(); i++) {
-			if ((Esileht.rList.get(i).getHooaeg().contains(Valik.aastaaeg()[2]) == true)
-					&& (Esileht.rList.get(i).getSyndmus().contains(valitud) == true)) {
+		for (int i = 0; i < list.size(); i++) {
+			if ((list.get(i).getHooaeg().contains(Valik.aastaaeg()[2]) == true)
+					&& (list.get(i).getSyndmus().contains(valitud) == true)) {
 				sobivad.add(i);
 			}
 		}
@@ -244,7 +247,7 @@ public class Valik extends JPanel implements ActionListener {
 		Random ran = new Random();
 		int random = sobivad.get(ran.nextInt(sobivad.size()));
 		//saadakse saadud eseme liik
-		String ranLiik = Esileht.rList.get(random).getLiik();
+		String ranLiik = list.get(random).getLiik();
 		
 		//tehakse läbi tsükkel, mis otsib saadud liigile paarilise
 		//N: kui saai ülemine osa, siis ostitakse randomiga, kuni saadakse alumine ja vastupidi
@@ -259,14 +262,14 @@ public class Valik extends JPanel implements ActionListener {
 			case "3":
 				int random2 = sobivad.get(ran.nextInt(sobivad.size()));
 				//kontrollitakse kas randomiga leitud teine ese on sobiv:
-				if (Esileht.rList.get(random2).getLiik().equals("2") == true) {
+				if (list.get(random2).getLiik().equals("2") == true) {
 					//komplekti kokku saades lisatakse info vastuse massiivi
-					komplekt[0] = ("<html>"+ Esileht.rList.get(random).getNimetus()
+					komplekt[0] = ("<html>"+ list.get(random).getNimetus()
 							+ " ja <br> "
-							+ Esileht.rList.get(random2).getNimetus() + "</html>")
+							+ list.get(random2).getNimetus() + "</html>")
 							.toUpperCase();
-					komplekt[1] = Esileht.rList.get(random).getPilt();
-					komplekt[2] = Esileht.rList.get(random2).getPilt();
+					komplekt[1] = list.get(random).getPilt();
+					komplekt[2] = list.get(random2).getPilt();
 					//lõpetatakse tsükkel
 					lopp = true;
 					break;
@@ -283,15 +286,15 @@ public class Valik extends JPanel implements ActionListener {
 			case "4":
 				int random3 = sobivad.get(ran.nextInt(sobivad.size()));
 				//kontrollitakse kas randomiga leitud teine ese on sobiv:
-				if (Esileht.rList.get(random3).getLiik().equals("1") == true) {
+				if (list.get(random3).getLiik().equals("1") == true) {
 					//komplekti kokku saades lisatakse info vastuse massiivi
 					komplekt[0] = ("<html>"
-							+ Esileht.rList.get(random).getNimetus()
+							+ list.get(random).getNimetus()
 							+ " ja <br> "
-							+ Esileht.rList.get(random3).getNimetus() + "</html>")
+							+ list.get(random3).getNimetus() + "</html>")
 							.toUpperCase();
-					komplekt[1] = Esileht.rList.get(random).getPilt();
-					komplekt[2] = Esileht.rList.get(random3).getPilt();
+					komplekt[1] = list.get(random).getPilt();
+					komplekt[2] = list.get(random3).getPilt();
 					//lõpetatakse tsükkel
 					lopp = true;
 					break;
@@ -302,9 +305,9 @@ public class Valik extends JPanel implements ActionListener {
 
 			case "12":
 				//kleidi korral lisatakse info vastuse massiivi
-				komplekt[0] = (Esileht.rList.get(random).getNimetus())
+				komplekt[0] = (list.get(random).getNimetus())
 						.toUpperCase();
-				komplekt[1] = Esileht.rList.get(random).getPilt();
+				komplekt[1] = list.get(random).getPilt();
 				komplekt[2] = "";
 				lopp = true;
 				break;

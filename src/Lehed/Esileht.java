@@ -1,11 +1,15 @@
 package Lehed;
 
 import java.awt.*;
+
 import javax.swing.*;
+
 import Failid.Failid;
 import Main.Pealeht;
 import Objekt.Riided;
+
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -25,6 +29,8 @@ public class Esileht extends JPanel implements ActionListener {
 	public JButton valik = new JButton("Riietust valima");
 	// arraylist riide objektidest
 	public static ArrayList<Riided> rList;
+	// fail, mis on programmi andmebaasiks
+	public static String fNimi="file.txt";
 
 	/**
 	 * Meetod, mis lisab raamile paneeli, seab selle kujunduse ja lisab nupud
@@ -60,7 +66,7 @@ public class Esileht extends JPanel implements ActionListener {
 					e1.printStackTrace();
 				}
 				// valik nupu vajutusel loetakse fail sisse
-				rList = Failid.reader();
+				rList = Failid.reader(fNimi);
 			}
 		});
 	}

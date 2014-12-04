@@ -17,12 +17,12 @@ public class Riided {
 	/**
 	 * Konstruktorid
 	 */
-	Riided(String nimetus, String liik, String hooaeg, String syndmus) {
+	Riided(String nimetus, String liik, String hooaeg, String syndmus, String pilt) {
 		this.nimetus = nimetus;
 		this.liik = liik;
 		this.hooaeg = hooaeg;
 		this.syndmus = syndmus;
-		this.syndmus = pilt;
+		this.pilt = pilt;
 	}
 	
 	public Riided(){

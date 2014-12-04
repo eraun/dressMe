@@ -22,7 +22,7 @@ public class Pealeht {
 	public static void main(String[] args) {
 		// raami kirjeldamine
 		raam = new JFrame();
-		raam.setTitle("dressMe");
+		raam.setTitle("dressMe (Eva Tiits, IA18)");
 		raam.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		raam.setSize(L, P);
 		raam.setVisible(true);

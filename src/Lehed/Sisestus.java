@@ -176,7 +176,7 @@ public class Sisestus extends JPanel implements ActionListener {
 				//komadega eraldatuna
 				else {
 					//loome kirjutaja
-					FileWriter writer=Failid.writer();
+					FileWriter writer=Failid.writer(Esileht.fNimi);
 					
 					// lisab faili nimetuse
 					String valitudNimetus = sisNimetus.getText();
